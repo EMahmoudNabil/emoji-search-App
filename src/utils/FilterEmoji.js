@@ -1,0 +1,16 @@
+import emojiList from "../DataAPI/emojiList.json";
+
+export default function filterEmoji(searchText, maxResults) {
+  console.log(searchText);
+  return emojiList
+    .filter((emoji) => {
+      if (emoji.title.toLowerCase().includes(searchText.toLowerCase())) {
+        return true;
+      }
+      if (emoji.keywords.includes(searchText)) {
+        return true;
+      }
+      return false;
+    })
+    .slice(0, maxResults);
+}
